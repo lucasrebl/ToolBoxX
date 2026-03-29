@@ -98,7 +98,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-import { qrcodeScanService, type ScanResult } from '@/services/qrcodeScanService'
+import { qrcodeScanService, type ScanResult } from '@/services/qrcode/qrcodeScanService'
 
 const isScanning = ref(false)
 const isProcessingFile = ref(false)

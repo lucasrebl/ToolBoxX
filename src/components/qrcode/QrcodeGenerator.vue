@@ -46,7 +46,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { qrcodeService } from '@/services/qrcodeService'
+import { qrcodeService } from '@/services/qrcode/qrcodeService'
 
 const inputUrl = ref('')
 const generatedQRCode = ref('')
