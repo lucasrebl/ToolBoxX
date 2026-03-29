@@ -53,37 +53,45 @@ const emit = defineEmits<{
   flex-direction: column;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.88);
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
 }
 
 .card-header h2 {
   margin: 0 0 0.35rem;
   font-size: 1.4rem;
-  color: #16213e;
+  color: var(--color-text);
+  font-family: var(--font-display);
 }
 
 .card-header p {
   margin: 0;
-  color: #52607a;
+  color: var(--color-text-muted);
   line-height: 1.5;
 }
 
 .field-label {
   font-weight: 700;
-  color: #16213e;
+  color: var(--color-text);
 }
 
 .converter-textarea {
   min-height: 180px;
   padding: 1rem;
-  border: 1px solid #c8d2e2;
+  border: 1px solid var(--color-border);
   border-radius: 12px;
   font: inherit;
   resize: vertical;
-  background: #f8fbff;
-  color: #1f2937;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-text);
+}
+
+.converter-textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
 }
 
 .action-row {
@@ -94,7 +102,7 @@ const emit = defineEmits<{
 
 .btn {
   padding: 0.8rem 1.2rem;
-  border: none;
+  border: 1px solid transparent;
   border-radius: 10px;
   font: inherit;
   font-weight: 700;
@@ -112,19 +120,20 @@ const emit = defineEmits<{
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #1d4ed8, #0f766e);
-  color: white;
+  background: var(--gradient-accent);
+  color: var(--color-text-inverse);
 }
 
 .btn-secondary {
-  background: #e2e8f0;
-  color: #1e293b;
+  background: var(--color-surface-strong);
+  border-color: var(--color-border);
+  color: var(--color-text);
 }
 
 .result-box {
   padding: 1rem;
-  background: #0f172a;
-  color: #e2e8f0;
+  background: var(--color-surface-dark);
+  color: var(--color-text-inverse);
   border-radius: 12px;
 }
 

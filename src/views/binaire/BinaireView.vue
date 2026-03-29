@@ -1,29 +1,31 @@
 <template>
-  <main class="binaire-view">
-    <section class="hero">
-      <p class="eyebrow">Outil de conversion</p>
-      <h1>Convertir du texte en binaire et du binaire en texte</h1>
-      <p class="hero-text">
-        Utilisez les deux convertisseurs ci-dessous pour encoder ou decoder rapidement vos donnees.
-      </p>
-      <p v-if="copyFeedback" class="copy-feedback">{{ copyFeedback }}</p>
-    </section>
+  <main class="page-layout binaire-view">
+    <section class="page-shell">
+      <section class="hero">
+        <p class="page-kicker">Outil de conversion</p>
+        <h1 class="page-title">Convertir du texte en binaire et du binaire en texte</h1>
+        <p class="page-subtitle hero-text">
+          Utilisez les deux convertisseurs ci-dessous pour encoder ou decoder rapidement vos donnees.
+        </p>
+        <p v-if="copyFeedback" class="copy-feedback">{{ copyFeedback }}</p>
+      </section>
 
-    <section class="converter-grid">
-      <TextToBinaryConverter
-        v-model="textInput"
-        :binary-output="binaryOutput"
-        @clear="clearTextInput"
-        @copy="copyToClipboard"
-      />
+      <section class="converter-grid">
+        <TextToBinaryConverter
+          v-model="textInput"
+          :binary-output="binaryOutput"
+          @clear="clearTextInput"
+          @copy="copyToClipboard"
+        />
 
-      <BinaryToTextConverter
-        v-model="binaryInput"
-        :text-output="textOutput"
-        :error-message="binaryError"
-        @clear="clearBinaryInput"
-        @copy="copyToClipboard"
-      />
+        <BinaryToTextConverter
+          v-model="binaryInput"
+          :text-output="textOutput"
+          :error-message="binaryError"
+          @clear="clearBinaryInput"
+          @copy="copyToClipboard"
+        />
+      </section>
     </section>
   </main>
 </template>
@@ -88,42 +90,28 @@ const copyToClipboard = async (value: string) => {
 
 <style scoped>
 .binaire-view {
-  min-height: 100vh;
-  padding: 3rem 1.5rem;
-  background:
-    radial-gradient(circle at top left, rgba(14, 165, 233, 0.2), transparent 28%),
-    radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.18), transparent 30%),
-    linear-gradient(160deg, #eff6ff 0%, #dbeafe 45%, #f8fafc 100%);
+  --gradient-page:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 26%),
+    radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.16), transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #dbeafe 44%, #f8fafc 100%);
 }
 
 .hero {
   max-width: 880px;
   margin: 0 auto 2rem;
   text-align: center;
-}
-
-.eyebrow {
-  margin: 0 0 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #0f766e;
-}
-
-h1 {
-  margin: 0;
-  color: #0f172a;
-  font-size: clamp(2rem, 4vw, 3.3rem);
-  line-height: 1.1;
+  padding: 2rem 2.2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-panel);
+  backdrop-filter: blur(18px);
 }
 
 .hero-text {
   max-width: 700px;
-  margin: 1rem auto 0;
-  font-size: 1.05rem;
-  line-height: 1.7;
-  color: #475569;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .copy-feedback {
@@ -132,7 +120,7 @@ h1 {
   padding: 0.8rem 1rem;
   border-radius: 999px;
   background: rgba(15, 118, 110, 0.12);
-  color: #115e59;
+  color: var(--color-success);
   font-weight: 700;
 }
 
@@ -147,6 +135,12 @@ h1 {
 @media (max-width: 900px) {
   .converter-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 1.5rem;
   }
 }
 </style>

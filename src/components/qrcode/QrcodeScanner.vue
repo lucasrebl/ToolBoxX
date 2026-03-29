@@ -221,21 +221,24 @@ const formatTime = (timestamp: number): string => {
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 h2 {
   margin: 0;
-  color: #333;
+  color: var(--color-text);
+  font-family: var(--font-display);
   font-size: 1.5rem;
   text-align: center;
 }
 
 h3 {
   margin: 0 0 1rem 0;
-  color: #333;
+  color: var(--color-text);
+  font-family: var(--font-display);
 }
 
 .scanner-options {
@@ -249,9 +252,10 @@ h3 {
   flex-direction: column;
   gap: 1rem;
   padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.78);
-  border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(60, 72, 88, 0.12);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
 }
 
 .option-header h3 {
@@ -260,14 +264,14 @@ h3 {
 
 .option-header p {
   margin: 0;
-  color: #5b6472;
+  color: var(--color-text-muted);
   line-height: 1.5;
 }
 
 .btn {
   padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -280,14 +284,14 @@ h3 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-accent);
+  color: var(--color-text-inverse);
   align-self: flex-start;
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
 }
 
 .btn-primary:disabled {
@@ -296,25 +300,24 @@ h3 {
 }
 
 .btn-danger {
-  background: #ef4444;
-  color: white;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: var(--color-text-inverse);
   align-self: center;
 }
 
 .btn-danger:hover {
-  background: #dc2626;
   transform: translateY(-2px);
 }
 
 .btn-secondary {
-  background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  background: var(--color-surface-strong);
+  color: var(--color-text);
+  border-color: var(--color-border);
 }
 
 .btn-secondary:hover:not(.disabled) {
-  background: #667eea;
-  color: white;
+  background: var(--color-surface-dark);
+  color: var(--color-text-inverse);
   transform: translateY(-2px);
 }
 
@@ -325,10 +328,10 @@ h3 {
 
 .error-message {
   padding: 1rem;
-  background-color: #fee;
-  border-left: 4px solid #f44;
-  color: #c33;
-  border-radius: 4px;
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  color: #b91c1c;
+  border-radius: 10px;
   font-size: 0.95rem;
 }
 
@@ -337,7 +340,7 @@ h3 {
   background: #fff7e6;
   border-left: 4px solid #f59e0b;
   color: #9a6700;
-  border-radius: 4px;
+  border-radius: 10px;
   font-size: 0.95rem;
 }
 
@@ -346,9 +349,9 @@ h3 {
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.82);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
 }
 
 #qr-scanner {
@@ -361,16 +364,16 @@ h3 {
 
 .selected-file {
   margin: 0;
-  color: #4b5563;
+  color: var(--color-text-muted);
   font-size: 0.95rem;
 }
 
 .file-preview {
   min-height: 220px;
   padding: 1rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.82);
   border-radius: 12px;
-  box-shadow: inset 0 0 0 1px rgba(102, 126, 234, 0.12);
+  box-shadow: inset 0 0 0 1px rgba(14, 165, 233, 0.12);
 }
 
 :deep(#qr-scanner) {
@@ -388,39 +391,40 @@ h3 {
 
 .result-section {
   padding: 2rem;
-  background: white;
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
 }
 
 .timestamp {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-muted);
   margin-bottom: 1rem;
 }
 
 .scanned-content {
   padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.92);
+  border-radius: 12px;
   margin-bottom: 1rem;
 }
 
 .scanned-content .label {
   margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
 .scanned-content .content-text {
   margin: 0;
   word-break: break-all;
-  color: #333;
+  color: var(--color-text);
   font-family: monospace;
   padding: 0.5rem;
-  background: white;
-  border-radius: 4px;
+  background: var(--color-surface-strong);
+  border-radius: 8px;
 }
 
 .action-buttons {

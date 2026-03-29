@@ -86,14 +86,16 @@ const downloadQR = () => {
   flex-direction: column;
   gap: 2rem;
   padding: 2rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background: var(--gradient-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 h2 {
   margin: 0;
-  color: #333;
+  color: var(--color-text);
+  font-family: var(--font-display);
   font-size: 1.5rem;
   text-align: center;
 }
@@ -108,28 +110,30 @@ h2 {
   flex: 1;
   min-width: 250px;
   padding: 0.75rem 1rem;
-  border: 2px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--color-text);
 }
 
 .url-input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.12);
 }
 
 .url-input:disabled {
-  background-color: #f0f0f0;
+  background-color: rgba(226, 232, 240, 0.7);
   cursor: not-allowed;
   opacity: 0.6;
 }
 
 .btn {
   padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid transparent;
+  border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -142,13 +146,13 @@ h2 {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: var(--gradient-accent);
+  color: var(--color-text-inverse);
 }
 
 .btn-primary:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.18);
 }
 
 .btn-primary:disabled {
@@ -157,14 +161,14 @@ h2 {
 }
 
 .btn-secondary {
-  background: white;
-  color: #667eea;
-  border: 2px solid #667eea;
+  background: var(--color-surface-strong);
+  color: var(--color-text);
+  border-color: var(--color-border);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: #667eea;
-  color: white;
+  background: var(--color-surface-dark);
+  color: var(--color-text-inverse);
   transform: translateY(-2px);
 }
 
@@ -186,10 +190,10 @@ h2 {
 
 .error-message {
   padding: 1rem;
-  background-color: #fee;
-  border-left: 4px solid #f44;
-  color: #c33;
-  border-radius: 4px;
+  background-color: #fee2e2;
+  border-left: 4px solid #ef4444;
+  color: #b91c1c;
+  border-radius: 10px;
   font-size: 0.95rem;
 }
 
@@ -198,47 +202,48 @@ h2 {
   flex-direction: column;
   gap: 1.5rem;
   padding: 2rem;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-soft);
 }
 
 .qrcode-display {
   display: flex;
   justify-content: center;
   padding: 1rem;
-  background: #f9f9f9;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 12px;
 }
 
 .qrcode-display img {
   max-width: 100%;
   height: auto;
-  border: 3px solid #ddd;
-  border-radius: 8px;
+  border: 2px solid var(--color-border);
+  border-radius: 12px;
 }
 
 .url-display {
   padding: 1rem;
-  background: #f5f5f5;
-  border-radius: 8px;
+  background: rgba(248, 250, 252, 0.92);
+  border-radius: 12px;
 }
 
 .url-display .label {
   margin: 0 0 0.5rem 0;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-muted);
   font-weight: 600;
 }
 
 .url-display .url-text {
   margin: 0;
   word-break: break-all;
-  color: #333;
+  color: var(--color-text);
   font-family: monospace;
   padding: 0.5rem;
-  background: white;
-  border-radius: 4px;
+  background: var(--color-surface-strong);
+  border-radius: 8px;
 }
 
 .action-buttons {

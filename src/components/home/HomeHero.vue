@@ -32,18 +32,16 @@
 .hero-panel {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(148, 163, 184, 0.18);
-  border-radius: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
   backdrop-filter: blur(18px);
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.14);
+  box-shadow: var(--shadow-panel);
 }
 
 .hero-copy {
   padding: 2.5rem;
-  background:
-    radial-gradient(circle at top left, rgba(56, 189, 248, 0.24), transparent 34%),
-    linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.9));
-  color: #f8fafc;
+  background: var(--gradient-hero-dark);
+  color: var(--color-text-inverse);
 }
 
 .hero-copy::after {
@@ -67,6 +65,7 @@
 
 h1 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(3.4rem, 10vw, 6rem);
   line-height: 0.95;
   letter-spacing: -0.05em;
@@ -82,9 +81,7 @@ h1 {
 
 .hero-panel {
   padding: 2rem;
-  background:
-    radial-gradient(circle at top right, rgba(245, 158, 11, 0.22), transparent 28%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(241, 245, 249, 0.92));
+  background: var(--gradient-panel-soft);
   align-self: end;
 }
 
@@ -107,9 +104,9 @@ h1 {
   position: relative;
   margin: 0;
   padding: 0.95rem 0 0.95rem 1.5rem;
-  color: #0f172a;
+  color: var(--color-text);
   font-weight: 600;
-  border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .panel-list li:last-child {

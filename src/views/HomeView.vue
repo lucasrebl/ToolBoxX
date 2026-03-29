@@ -1,16 +1,13 @@
 <template>
-  <main class="home-view">
-    <div class="backdrop backdrop-one" />
-    <div class="backdrop backdrop-two" />
-
-    <section class="home-shell">
+  <main class="page-layout home-view">
+    <section class="page-shell">
       <HomeHero />
 
-      <section class="features-section">
-        <div class="section-heading">
-          <p class="section-kicker">Fonctionnalites disponibles</p>
-          <h2>Des outils concrets pour les usages rapides du quotidien</h2>
-          <p>
+      <section class="page-section features-section">
+        <div class="page-heading">
+          <p class="page-kicker">Fonctionnalites disponibles</p>
+          <h2 class="page-title">Des outils concrets pour les usages rapides du quotidien</h2>
+          <p class="page-subtitle">
             Chaque section vous emmene directement vers une page dediee, avec une interface
             pensee pour aller droit au but.
           </p>
@@ -60,77 +57,8 @@ const features = [
 </script>
 
 <style scoped>
-.home-view {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
-  background:
-    linear-gradient(180deg, #f8fafc 0%, #e2e8f0 48%, #f8fafc 100%);
-}
-
-.backdrop {
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(70px);
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-.backdrop-one {
-  top: -5rem;
-  left: -3rem;
-  width: 18rem;
-  height: 18rem;
-  background: rgba(14, 165, 233, 0.22);
-}
-
-.backdrop-two {
-  right: -5rem;
-  top: 14rem;
-  width: 24rem;
-  height: 24rem;
-  background: rgba(249, 115, 22, 0.18);
-}
-
-.home-shell {
-  position: relative;
-  z-index: 1;
-  width: min(1180px, calc(100% - 2rem));
-  margin: 0 auto;
-  padding: 2rem 0 3rem;
-}
-
 .features-section {
-  margin-top: 2rem;
   margin-bottom: 5rem;
-}
-
-.section-heading {
-  max-width: 780px;
-  margin-bottom: 1.25rem;
-}
-
-.section-kicker {
-  margin: 0 0 0.8rem;
-  color: #0f766e;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.78rem;
-  font-weight: 800;
-}
-
-h2 {
-  margin: 0;
-  color: #0f172a;
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.1;
-}
-
-.section-heading p:last-child {
-  margin: 1rem 0 0;
-  color: #475569;
-  line-height: 1.8;
-  font-size: 1.02rem;
 }
 
 .features-grid {
@@ -141,11 +69,6 @@ h2 {
 }
 
 @media (max-width: 900px) {
-  .home-shell {
-    width: min(100% - 1rem, 1180px);
-    padding-top: 1rem;
-  }
-
   .features-grid {
     grid-template-columns: 1fr;
   }

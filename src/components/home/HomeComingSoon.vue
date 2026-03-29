@@ -40,13 +40,10 @@ const items = [
   grid-template-columns: minmax(0, 1fr);
   gap: 1.5rem;
   padding: 2rem;
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at top left, rgba(34, 197, 94, 0.12), transparent 24%),
-    radial-gradient(circle at bottom right, rgba(249, 115, 22, 0.16), transparent 28%),
-    linear-gradient(140deg, #0f172a, #111827 45%, #1e293b);
+  border-radius: var(--radius-xl);
+  background: var(--gradient-panel-dark);
   color: #e2e8f0;
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.18);
+  box-shadow: var(--shadow-panel-strong);
 }
 
 .section-label,
@@ -69,6 +66,7 @@ const items = [
 
 h2 {
   margin: 0;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 2.9rem);
   line-height: 1.1;
 }
@@ -101,8 +99,9 @@ h2 {
 
 h3 {
   margin: 1rem 0 0;
+  font-family: var(--font-display);
   font-size: 1.2rem;
-  color: #f8fafc;
+  color: var(--color-text-inverse);
 }
 
 .status-card p:last-child {

@@ -34,12 +34,10 @@ defineProps<{
   flex-direction: column;
   height: 100%;
   padding: 1.6rem;
-  border-radius: 24px;
-  border: 1px solid rgba(148, 163, 184, 0.2);
-  background:
-    radial-gradient(circle at top right, rgba(56, 189, 248, 0.16), transparent 24%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(248, 250, 252, 0.95));
-  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--gradient-card);
+  box-shadow: var(--shadow-soft);
 }
 
 .card-top {
@@ -55,7 +53,7 @@ defineProps<{
   font-weight: 800;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #0369a1;
+  color: var(--color-primary-strong);
 }
 
 .feature-accent {
@@ -64,22 +62,23 @@ defineProps<{
   justify-content: center;
   min-width: 3rem;
   height: 3rem;
-  border-radius: 18px;
-  background: linear-gradient(135deg, #0f172a, #1d4ed8);
-  color: #f8fafc;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-accent);
+  color: var(--color-text-inverse);
   font-size: 1.25rem;
   font-weight: 700;
 }
 
 h3 {
   margin: 1rem 0 0;
-  color: #0f172a;
+  color: var(--color-text);
+  font-family: var(--font-display);
   font-size: 1.5rem;
 }
 
 .description {
   margin: 0.85rem 0 0;
-  color: #475569;
+  color: var(--color-text-muted);
   line-height: 1.7;
   flex: 1;
 }
@@ -89,8 +88,8 @@ h3 {
   margin-top: 1.5rem;
   padding: 0.78rem 1.1rem;
   border-radius: 999px;
-  background: #0f172a;
-  color: #f8fafc;
+  background: var(--color-surface-dark);
+  color: var(--color-text-inverse);
   text-decoration: none;
   font-weight: 700;
   transition:
@@ -102,6 +101,6 @@ h3 {
 .feature-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18);
-  background: #1e293b;
+  background: var(--color-surface-dark-soft);
 }
 </style>

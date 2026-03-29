@@ -1,26 +1,37 @@
 <template>
-  <div class="qrcode-view">
-    <div class="header">
-      <h1>QR Code Manager</h1>
-      <p class="subtitle">Générez et scannez des codes QR facilement</p>
-    </div>
+  <main class="page-layout qrcode-view">
+    <section class="page-shell">
+      <header class="qrcode-hero">
+        <div class="hero-copy">
+          <p class="page-kicker">Outil QR Code</p>
+          <h1 class="page-title">Generer et scanner des QR codes depuis une seule page</h1>
+          <p class="page-subtitle">
+            Creez un QR code pour partager une information ou scannez un code existant a partir
+            de la camera et d'une image.
+          </p>
+        </div>
 
-    <div class="tabs">
-      <button
-        v-for="tab in tabs"
-        :key="tab"
-        :class="['tab-button', { active: activeTab === tab }]"
-        @click="activeTab = tab"
-      >
-        {{ tab === 'generate' ? '📝 Générer' : '📷 Scanner' }}
-      </button>
-    </div>
+        <div class="hero-tabs glass-card">
+          <p class="tabs-label">Choisissez un mode</p>
+          <div class="tabs">
+            <button
+              v-for="tab in tabs"
+              :key="tab"
+              :class="['tab-button', { active: activeTab === tab }]"
+              @click="activeTab = tab"
+            >
+              {{ tab === 'generate' ? 'Generer' : 'Scanner' }}
+            </button>
+          </div>
+        </div>
+      </header>
 
-    <div class="content">
-      <QrcodeGenerator v-show="activeTab === 'generate'" />
-      <QrcodeScanner v-show="activeTab === 'scan'" />
-    </div>
-  </div>
+      <section class="content">
+        <QrcodeGenerator v-show="activeTab === 'generate'" />
+        <QrcodeScanner v-show="activeTab === 'scan'" />
+      </section>
+    </section>
+  </main>
 </template>
 
 <script setup lang="ts">
@@ -36,92 +47,104 @@ const tabs: TabType[] = ['generate', 'scan']
 
 <style scoped>
 .qrcode-view {
-  min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 2rem 1rem;
+  --gradient-page:
+    radial-gradient(circle at top left, rgba(14, 165, 233, 0.18), transparent 26%),
+    radial-gradient(circle at right center, rgba(59, 130, 246, 0.14), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #dbeafe 46%, #f8fafc 100%);
 }
 
-.header {
-  text-align: center;
-  margin-bottom: 3rem;
-  color: white;
+.qrcode-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.8fr);
+  gap: 1.5rem;
+  align-items: end;
+  margin-bottom: 2rem;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 2.5rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.hero-copy {
+  padding: 2rem 2.2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--gradient-hero-dark);
+  box-shadow: var(--shadow-panel);
 }
 
-.header .subtitle {
-  margin: 0.5rem 0 0 0;
-  font-size: 1.1rem;
-  opacity: 0.9;
+.hero-copy :deep(.page-kicker) {
+  color: #7dd3fc;
+}
+
+.hero-copy :deep(.page-title) {
+  color: var(--color-text-inverse);
+}
+
+.hero-copy :deep(.page-subtitle) {
+  color: rgba(226, 232, 240, 0.9);
+}
+
+.hero-tabs {
+  padding: 1.5rem;
+}
+
+.tabs-label {
+  margin: 0 0 1rem;
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .tabs {
   display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
   flex-wrap: wrap;
+  gap: 0.8rem;
 }
 
 .tab-button {
-  padding: 0.75rem 2rem;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.82rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.56);
+  color: var(--color-text);
+  font-weight: 700;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.3);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .tab-button:hover {
-  background: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
+  background: var(--color-surface-strong);
 }
 
 .tab-button.active {
-  background: white;
-  color: #667eea;
-  border-color: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--color-surface-dark);
+  color: var(--color-text-inverse);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
 }
 
 .content {
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
 }
 
+@media (max-width: 900px) {
+  .qrcode-hero {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 600px) {
-  .qrcode-view {
-    padding: 1rem 0.5rem;
-  }
-
-  .header {
-    margin-bottom: 2rem;
-  }
-
-  .header h1 {
-    font-size: 1.8rem;
-  }
-
-  .header .subtitle {
-    font-size: 1rem;
-  }
-
-  .tabs {
-    margin-bottom: 1rem;
+  .hero-copy,
+  .hero-tabs {
+    padding: 1.5rem;
   }
 
   .tab-button {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.95rem;
+    width: 100%;
   }
 }
 </style>
