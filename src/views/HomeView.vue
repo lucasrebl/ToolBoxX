@@ -53,6 +53,14 @@ const features = [
       'Passez du texte au binaire, puis du binaire au texte, avec des retours instantanes et lisibles.',
     to: '/binaire',
   },
+  {
+    accent: 'PW',
+    title: 'Mot de passe',
+    tag: 'Generation',
+    description:
+      'Creez un mot de passe personnalise en choisissant la longueur, les chiffres, les majuscules et les caracteres speciaux.',
+    to: '/password',
+  },
 ]
 </script>
 
@@ -63,7 +71,7 @@ const features = [
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.25rem;
   align-items: stretch;
 }

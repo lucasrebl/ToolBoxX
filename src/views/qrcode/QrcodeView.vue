@@ -1,6 +1,8 @@
 <template>
   <main class="page-layout qrcode-view">
     <section class="page-shell">
+      <AppBackHomeLink />
+
       <header class="qrcode-hero">
         <div class="hero-copy">
           <p class="page-kicker">Outil QR Code</p>
@@ -36,6 +38,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import AppBackHomeLink from '@/components/AppBackHomeLink.vue'
 import QrcodeGenerator from '@/components/qrcode/QrcodeGenerator.vue'
 import QrcodeScanner from '@/components/qrcode/QrcodeScanner.vue'
 
