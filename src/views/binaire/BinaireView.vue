@@ -1,6 +1,8 @@
 <template>
   <main class="page-layout binaire-view">
     <section class="page-shell">
+      <AppBackHomeLink />
+
       <section class="hero">
         <p class="page-kicker">Outil de conversion</p>
         <h1 class="page-title">Convertir du texte en binaire et du binaire en texte</h1>
@@ -32,6 +34,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import AppBackHomeLink from '@/components/AppBackHomeLink.vue'
 import BinaryToTextConverter from '@/components/binaire/BinaryToTextConverter.vue'
 import TextToBinaryConverter from '@/components/binaire/TextToBinaryConverter.vue'
 import { binaryConverterService } from '@/services/binaire/binaryConverterService'

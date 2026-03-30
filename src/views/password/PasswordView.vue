@@ -1,6 +1,8 @@
 <template>
   <main class="page-layout password-view">
     <section class="page-shell">
+      <AppBackHomeLink />
+
       <header class="password-hero">
         <div class="hero-copy">
           <p class="page-kicker">Outil mot de passe</p>
@@ -46,6 +48,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
+import AppBackHomeLink from '@/components/AppBackHomeLink.vue'
 import PasswordGeneratorPanel from '@/components/password/PasswordGeneratorPanel.vue'
 import {
   SPECIAL_CHARACTERS,
