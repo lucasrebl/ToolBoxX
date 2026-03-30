@@ -14,6 +14,7 @@
       <ul class="panel-list">
         <li>Generation et scan de QR codes</li>
         <li>Conversion texte et binaire</li>
+        <li>Generateur de mots de passe</li>
         <li>De nouveaux outils en preparation</li>
       </ul>
     </div>
