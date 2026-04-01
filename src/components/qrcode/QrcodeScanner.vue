@@ -7,25 +7,42 @@
         <div class="option-header">
           <h3>Scanner avec la caméra</h3>
           <p>
-            Recommandé sur téléphone pour lire un QR code en direct.
+            Disponible sur mobile pour ouvrir directement la caméra et scanner en un geste.
           </p>
         </div>
 
-        <button
-          v-if="!isScanning"
-          @click="startScanning"
-          :disabled="!cameraSupported || isProcessingFile"
-          class="btn btn-primary"
-        >
-          📷 Démarrer le scanner
-        </button>
+        <div v-if="!isMobileDevice" class="info-message">
+          Le scan caméra est réservé à la version mobile. Sur ordinateur, utilise l'import d'image.
+        </div>
 
-        <div v-if="!cameraSupported" class="info-message">
+        <div v-else-if="!cameraSupported" class="info-message">
           Caméra non disponible sur cet appareil ou ce navigateur.
         </div>
 
+        <div v-else-if="permissionState === 'denied'" class="info-message">
+          L'accès à la caméra a été refusé. Autorise la caméra dans les réglages du navigateur pour relancer le scan.
+        </div>
+
+        <button
+          v-else-if="!isScanning"
+          @click="startScanning"
+          :disabled="isProcessingFile"
+          class="btn btn-primary"
+        >
+          {{ permissionState === 'granted' ? '📷 Ouvrir la caméra' : '📷 Autoriser et ouvrir la caméra' }}
+        </button>
+
+        <p v-if="isMobileDevice && cameraSupported && permissionState !== 'denied' && !isScanning" class="helper-text">
+          {{ permissionState === 'granted'
+            ? 'La caméra s’ouvrira directement sans étape supplémentaire.'
+            : 'Le navigateur demandera l’autorisation une première fois, puis pourra la mémoriser.' }}
+        </p>
+
         <div v-if="isScanning" class="scanner-container">
           <div id="qr-scanner"></div>
+          <p class="helper-text scanner-hint">
+            Cadre le QR code devant la caméra. Le scan s'arrête automatiquement dès qu'un code est détecté.
+          </p>
           <button @click="stopScanning" class="btn btn-danger">
             ⏹️ Arrêter le scanner
           </button>
@@ -98,11 +115,17 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from 'vue'
-import { qrcodeScanService, type ScanResult } from '@/services/qrcode/qrcodeScanService'
+import {
+  qrcodeScanService,
+  type CameraPermissionState,
+  type ScanResult,
+} from '@/services/qrcode/qrcodeScanService'
 
 const isScanning = ref(false)
 const isProcessingFile = ref(false)
+const isMobileDevice = ref(false)
 const cameraSupported = ref(false)
+const permissionState = ref<CameraPermissionState>('prompt')
 const errorMessage = ref('')
 const lastScannedResult = ref<ScanResult | null>(null)
 const isCopied = ref(false)
@@ -111,7 +134,9 @@ const showFilePreview = ref(false)
 const fileInput = ref<HTMLInputElement | null>(null)
 
 onMounted(async () => {
-  cameraSupported.value = await qrcodeScanService.isCameraSupported()
+  isMobileDevice.value = qrcodeScanService.isMobileDevice()
+  cameraSupported.value = isMobileDevice.value && await qrcodeScanService.isCameraSupported()
+  permissionState.value = await qrcodeScanService.getCameraPermissionState()
 })
 
 onUnmounted(async () => {
@@ -136,13 +161,16 @@ const startScanning = async () => {
       'qr-scanner',
       (result) => {
         lastScannedResult.value = result
+        isScanning.value = false
       },
       (error) => {
         errorMessage.value = error
       }
     )
+    permissionState.value = await qrcodeScanService.getCameraPermissionState()
   } catch (error) {
     errorMessage.value = error instanceof Error ? error.message : 'Erreur lors du démarrage du scanner'
+    permissionState.value = await qrcodeScanService.getCameraPermissionState()
     isScanning.value = false
   }
 }
@@ -368,6 +396,13 @@ h3 {
   font-size: 0.95rem;
 }
 
+.helper-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .file-preview {
   min-height: 220px;
   padding: 1rem;
@@ -378,6 +413,10 @@ h3 {
 
 :deep(#qr-scanner) {
   width: 100%;
+}
+
+.scanner-hint {
+  text-align: center;
 }
 
 :deep(#qr-file-scanner) {
