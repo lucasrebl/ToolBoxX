@@ -8,6 +8,22 @@ export interface ScanResult {
 
 export type CameraPermissionState = PermissionState | 'unsupported'
 
+const toErrorMessage = (error: unknown): string => {
+    if (error instanceof Error) {
+        return error.message
+    }
+
+    if (typeof error === 'string') {
+        return error
+    }
+
+    try {
+        return JSON.stringify(error)
+    } catch {
+        return 'Erreur inconnue'
+    }
+}
+
 const getPreferredCamera = async () => {
     const cameras = await Html5Qrcode.getCameras()
 
@@ -67,7 +83,7 @@ export const qrcodeScanService = {
 
             try {
                 await this.private.scanner.start(
-                    { facingMode: { ideal: 'environment' } },
+                    { facingMode: 'environment' },
                     scanConfig,
                     success,
                     error
@@ -84,9 +100,9 @@ export const qrcodeScanService = {
 
             this.private.isScanning = true
         } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'Erreur inconnue'
+            const errorMessage = toErrorMessage(error)
             onError?.(`Erreur lors du démarrage du scanner: ${errorMessage}`)
-            throw error
+            throw new Error(errorMessage)
         }
     },
 
@@ -109,7 +125,7 @@ export const qrcodeScanService = {
                 rawData: decodedText
             }
         } catch (error) {
-            const errorMessage = error instanceof Error ? error.message : 'Impossible de lire ce fichier'
+            const errorMessage = toErrorMessage(error)
             throw new Error(`Erreur lors de l'analyse du fichier: ${errorMessage}`)
         }
     },
