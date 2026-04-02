@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import BinaireView from '@/views/binaire/BinaireView.vue'
+import ConvertisseurView from '@/views/convertisseur/ConvertisseurView.vue'
 import QrcodeView from '@/views/qrcode/QrcodeView.vue'
 import PasswordView from '@/views/password/PasswordView.vue'
 
@@ -15,6 +16,14 @@ const router = createRouter({
       component: HomeView,
       meta: {
         title: 'ToolBoxX | Accueil',
+      },
+    },
+    {
+      path: '/convertisseur',
+      name: 'convertisseur',
+      component: ConvertisseurView,
+      meta: {
+        title: 'ToolBoxX | Convertisseur d unites',
       },
     },
     {
