@@ -1,4 +1,4 @@
-export type UnitCategoryId = 'length' | 'mass' | 'temperature'
+export type UnitCategoryId = 'length' | 'mass' | 'temperature' | 'time'
 
 export type UnitDefinition = {
   id: string

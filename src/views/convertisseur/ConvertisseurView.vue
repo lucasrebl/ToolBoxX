@@ -9,7 +9,8 @@
           <h1 class="page-title">Passez d une unite a l autre sans vous perdre dans l interface</h1>
           <p class="page-subtitle">
             Le convertisseur est pense pour accueillir plusieurs familles d unites. Il couvre deja
-            la longueur, la masse et la temperature dans une interface simple a etendre ensuite.
+            la longueur, la masse, la temperature et le temps dans une interface simple a etendre
+            ensuite.
           </p>
         </div>
 
