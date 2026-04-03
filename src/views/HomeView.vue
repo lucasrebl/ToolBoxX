@@ -38,6 +38,14 @@ import HomeHero from '@/components/home/HomeHero.vue'
 
 const features = [
   {
+    accent: 'UN',
+    title: 'Convertisseur',
+    tag: 'Unites',
+    description:
+      'Convertissez rapidement des longueurs et temperatures dans une interface claire, pensee pour accueillir d autres unites ensuite.',
+    to: '/convertisseur',
+  },
+  {
     accent: 'QR',
     title: 'QR Code',
     tag: 'Scan et generation',
@@ -71,12 +79,12 @@ const features = [
 
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.25rem;
   align-items: stretch;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 720px) {
   .features-grid {
     grid-template-columns: 1fr;
   }
