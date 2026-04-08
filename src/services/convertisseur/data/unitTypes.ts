@@ -1,4 +1,13 @@
-export type UnitCategoryId = 'length' | 'mass' | 'temperature' | 'time' | 'speed'
+export type UnitCategoryId =
+  | 'length'
+  | 'mass'
+  | 'volume'
+  | 'surface'
+  | 'temperature'
+  | 'time'
+  | 'speed'
+  | 'storage'
+  | 'data-rate'
 
 export type UnitDefinition = {
   id: string

@@ -6,11 +6,11 @@
       <header class="convertisseur-hero">
         <div class="hero-copy">
           <p class="page-kicker">Convertisseur d unites</p>
-          <h1 class="page-title">Passez d une unite a l autre sans vous perdre dans l interface</h1>
+          <h1 class="page-title">Passez d'une unite a l'autre sans vous perdre dans l'interface</h1>
           <p class="page-subtitle">
-            Le convertisseur est pense pour accueillir plusieurs familles d unites. Il couvre deja
-            la longueur, la masse, la temperature, le temps et la vitesse dans une interface
-            simple a etendre ensuite.
+            Le convertisseur est pense pour accueillir plusieurs familles d'unites. Il couvre deja
+            les mesures essentielles du quotidien et du numerique, dans une interface simple a
+            etendre ensuite.
           </p>
         </div>
 
@@ -18,8 +18,8 @@
           <p class="side-kicker">Architecture evolutive</p>
           <p class="side-title">Une categorie, une liste d unites, et la meme interface reutilisable.</p>
           <p class="side-text">
-            Ajouter la surface, le volume ou la pression reviendra surtout a enrichir les donnees et
-            le service, sans repenser la page.
+            Chaque categorie garde la meme logique de saisie pour permettre une prise en main
+            immediate, meme quand la liste des convertisseurs s agrandit.
           </p>
         </aside>
       </header>
