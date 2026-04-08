@@ -9,7 +9,8 @@
           <h1 class="page-title">Passez d'une unite a l'autre sans vous perdre dans l'interface</h1>
           <p class="page-subtitle">
             Le convertisseur est pense pour accueillir plusieurs familles d'unites. Il couvre deja
-            les mesures essentielles du quotidien, dans une interface simple a etendre ensuite.
+            les mesures essentielles du quotidien et du numerique, dans une interface simple a
+            etendre ensuite.
           </p>
         </div>
 
@@ -17,8 +18,8 @@
           <p class="side-kicker">Architecture evolutive</p>
           <p class="side-title">Une categorie, une liste d unites, et la meme interface reutilisable.</p>
           <p class="side-text">
-            Ajouter la pression, l energie ou la puissance reviendra surtout a enrichir les donnees
-            et le service, sans repenser la page.
+            Chaque categorie garde la meme logique de saisie pour permettre une prise en main
+            immediate, meme quand la liste des convertisseurs s agrandit.
           </p>
         </aside>
       </header>

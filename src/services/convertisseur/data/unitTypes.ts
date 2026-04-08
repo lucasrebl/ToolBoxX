@@ -6,6 +6,8 @@ export type UnitCategoryId =
   | 'temperature'
   | 'time'
   | 'speed'
+  | 'storage'
+  | 'data-rate'
 
 export type UnitDefinition = {
   id: string
